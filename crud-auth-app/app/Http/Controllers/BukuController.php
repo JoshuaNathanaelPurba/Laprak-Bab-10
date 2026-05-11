@@ -10,42 +10,36 @@ class BukuController extends Controller
     public function index()
     {
         $bukus = Buku::all();
-
-        return view('buku.index', compact('bukus'));
+        return view('Index', compact('bukus')); 
     }
 
     public function create()
     {
-        return view('buku.create');
+        return view('Create');
     }
 
     public function store(Request $request)
     {
         Buku::create($request->all());
-
         return redirect('/buku');
     }
 
     public function edit($id)
     {
         $buku = Buku::findOrFail($id);
-
-        return view('buku.edit', compact('buku'));
+        return view('Edit', compact('buku'));
     }
 
     public function update(Request $request, $id)
     {
         $buku = Buku::findOrFail($id);
-
         $buku->update($request->all());
-
         return redirect('/buku');
     }
 
     public function destroy($id)
     {
         Buku::destroy($id);
-
         return redirect('/buku');
     }
 }

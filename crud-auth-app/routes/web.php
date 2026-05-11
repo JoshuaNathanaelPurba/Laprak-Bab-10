@@ -7,10 +7,8 @@ Route::get('/', function () {
     return redirect('/buku');
 });
 
-// READ bisa diakses semua orang
 Route::get('/buku', [BukuController::class, 'index']);
 
-// CREATE UPDATE DELETE harus login
 Route::middleware('auth')->group(function () {
 
     Route::get('/buku/create', [BukuController::class, 'create']);
